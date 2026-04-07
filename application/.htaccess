@@ -1,6 +1,8 @@
-<IfModule authz_core_module>
-    Require all denied
-</IfModule>
-<IfModule !authz_core_module>
-    Deny from all
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Si el archivo o carpeta existe, se usa normalmente
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    # Si no existe, todo se manda al index.php
+    RewriteRule ^(.*)$ index.php/$1 [L]
 </IfModule>
