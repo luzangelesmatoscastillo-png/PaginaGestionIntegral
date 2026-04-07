@@ -192,8 +192,8 @@ if ( ! function_exists('load_class'))
 		is_loaded($class);
 
 		$_classes[$class] = isset($param)
-			? new $name($param)
-			: new $name();
+			? new $class($param)
+			: new $class();
 		return $_classes[$class];
 	}
 }
